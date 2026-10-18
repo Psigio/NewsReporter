@@ -55,13 +55,13 @@ public class Program
         services.AddLogging();
 
         // Add a HybridCache for in-memory caching.  Could be extended to use a distributed/persisted cache (eg Redis) if desired to share between different instances of the NewsReporter service.
-        // Note that the HybridCache manages concurrent requests to create missing values so that multiple concurrent requests for the same key will result in only a single call to the underlying factory
+        // Note that the HybridCache manages concurrent requests to create missing values so that multiple concurrent requests for the same key will result in only a single call to the underlying factory.
         services.AddHybridCache();
 
         // Register a wrapper for the HybridCache to allow us to use our own ICache interface for testing/mocking purposes
         services.AddSingleton<ICache>(sp => new HybridCacheWrapper(sp.GetRequiredService<HybridCache>()));
 
-        // Register options for and a HttpClient for use by the HackerNewsFetcher.  Note we also configure a rate limiter to ensure that we don't call the target API excessively
+        // Register options for and a HttpClient for use by the HackerNewsFetcher.  Note we also configure a rate limiter to ensure that we don't call the target API excessively.
         services.AddOptions<HttpClientFactoryOptions>()
             .Configure<IOptions<TargetApiSettings>>((options, targetApiSettings)
                 => options.HttpClientActions.Add(client =>
@@ -91,7 +91,7 @@ public class Program
 
         // Register our controllers
         services.AddControllers();
-        // Register Swagger for API documentation
+        // Register OpenApi for API documentation
         services.AddOpenApi();
     }
 }

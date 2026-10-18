@@ -40,6 +40,7 @@ public class StoryAggregator(IFetcher fetcher, ICache cache, IOptionsMonitor<Cac
         return storySummaries;
     }
 
+    // Use cache to reduce load on IFetcher/API.  Note default HybridCache implementation manages concurrent requests some only a single invocation is made to the value factory.
     private ValueTask<IList<ulong>> GetBestStoryIdsAsync(CancellationToken cancellationToken)
         => _cache.GetOrCreateAsync(
             "bestStoryIds",
