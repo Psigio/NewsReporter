@@ -3,7 +3,7 @@
 Provides an asp.net RESTful interface to retrieve the top `n` news stories from HackerNews, using the publicly available API described at https://github.com/HackerNews/API.  The service retrieves the list of best stories from the HackerNews API lazily and caches it in memory for a period of time.  It retrieves a number of story details from the HackerNews API as requested and caches them in memory also for a period of time.  Calls made to the HackerNews API are rate-limited to ensure that the upstream API is not overloaded.
 
 # Building
-This code was built using .net 10 (version 10.0.112) and will operate on any version with a patch version equal to or higher than this.  To run locally, follow the steps below, assuming that you already have a working .net-10 SDK installed and network access is available to retrieve NuGet packages (by default this will be [nuget.org](https://www.nuget.org), but may be overriden by your own user/machine level nuget settings to point to a proxy or private repository.
+This code was built using .net 10 (version 10.0.112) and will operate on any version with a feature version equal to or higher than this.  To run locally, follow the steps below, assuming that you already have a working .net-10 SDK installed and network access is available to retrieve NuGet packages (by default this will be [nuget.org](https://www.nuget.org), but may be overriden by your own user/machine level nuget settings to point to a proxy or private repository.
 
 1. Check out the repository.
 2. In a console, go to the root directory and run `dotnet restore`, followed by `dotnet build` to build the application (`build` will typically call the restore step automatically, so you may omit the restore step if you like).
